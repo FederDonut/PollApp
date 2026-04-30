@@ -1,0 +1,63 @@
+@use '../../../../pollapp_style/functions' as fct;
+//@use '../../../../pollapp_style/fonts';
+
+$Mulish: 'Mulish';
+$Nerko: 'Nerko One';
+
+body {
+  height: 100dvh;
+  width: 100%;
+  background-color: #35263a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .flex-wrapper {
+    height: 100%;
+    width: 85%;
+    max-width: 1980px;
+    //display: flex;
+    //flex-direction: column;
+    .header-Logo {
+      position: relative;
+      top: 39px;
+      //padding-top: 39px;
+      height: 46px;
+      width: 100%;
+    }
+
+    .app-introduction {
+      position: relative;
+      top: 177px;
+      height: 420px;
+      width: 100%;
+      //width: 85%;
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+
+      .text-wrapper-left {
+        height: 380px;
+        width: 712px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        h1 {
+          font-size: fct.px-to-rem(100);
+          font-weight: 400;
+          line-height: fct.px-to-rem(89);
+          letter-spacing: 0;
+          color: #ffb770;
+          white-space: nowrap;
+          font-family: $Nerko;
+        }
+        p {
+          font-size: fct.px-to-rem(24);
+          color: #ffffff;
+          font-family: $Mulish;
+        }
+      }
+    }
+  }
+}

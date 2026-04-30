@@ -1,0 +1,19 @@
+@use './functions' as fct;
+
+$Nokora: 'Nokora';
+
+.primaryBtn {
+  height: 48px;
+  width: 138px;
+  padding: 12px 16px;
+  font-size: fct.px-to-rem(18);
+  font-family: $Nokora;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  color: #221227;
+  border: 0;
+  background-color: #ffcfa1;
+}
