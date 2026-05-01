@@ -1,0 +1,50 @@
+@use '../../../../pollapp_style/functions' as fct;
+@use '../../../../pollapp_style/mixin' as mixin;
+
+$Mulish: 'Mulish';
+$Nerko: 'Nerko One';
+
+body {
+  height: 100dvh;
+  width: 100%;
+  background-color: #fefdff;
+  @include mixin.center;
+
+  .survey-wrapper {
+    height: 844px;
+    width: 1166px;
+    background-color: #35273a;
+    @include mixin.create-survey-radius;
+    @include mixin.center;
+
+    .inner-wrapper {
+      height: 668px;
+      width: 1052px;
+
+      .survey-header {
+        height: 87px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .header-left {
+          img {
+            height: fct.px-to-rem(26);
+            width: fct.px-to-rem(59);
+          }
+          h2 {
+            font-size: fct.px-to-rem(56);
+            font-family: $Nerko;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: 0;
+            color: #ee9236;
+          }
+        }
+        .header-right {
+          display: flex;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+}
