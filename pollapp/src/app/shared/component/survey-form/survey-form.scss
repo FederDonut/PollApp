@@ -1,0 +1,21 @@
+@use '../../../../pollapp_style/mixin' as mixin;
+
+.forms-wrapper {
+  height: 629px;
+  width: 100%;
+  background-color: #8e709929;
+  @include mixin.create-survey-radius;
+  border-top-right-radius: 80px;
+
+  .form-header {
+    display: flex;
+    border: none;
+  }
+  .question-body {
+    height: auto;
+    max-height: 351px;
+    width: 100%;
+    margin-top: 64px;
+    border: none;
+  }
+}

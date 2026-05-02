@@ -13,13 +13,16 @@ body {
   .survey-wrapper {
     height: 844px;
     width: 1166px;
-    background-color: #35273a;
+    background-color: #35263a;
     @include mixin.create-survey-radius;
     @include mixin.center;
 
     .inner-wrapper {
-      height: 668px;
+      height: 748px;
       width: 1052px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
 
       .survey-header {
         height: 87px;
@@ -44,6 +47,10 @@ body {
           display: flex;
           align-items: flex-end;
         }
+      }
+      .survey-body {
+        height: 629px;
+        width: 1052px;
       }
     }
   }

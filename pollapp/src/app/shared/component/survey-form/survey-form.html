@@ -1,0 +1,17 @@
+<section class="forms-wrapper">
+  <form [formGroup]="surveyForm">
+    <fieldset class="form-header">
+      <section class="survey-form__left">
+        <label for="SurveyName">Survey name</label>
+        <input type="text" id="survey-Name" formControlName="name" />
+        <label for="end-date">Set end date (optional)</label>
+        <input type="date" name="end-date" id="end-Date" formControlName="endDate" />
+      </section>
+      <section class="survey-form__right">
+        <label for="description">Description text (optional)</label>
+        <textarea name="Description" id="description" rows="4"></textarea>
+      </section>
+    </fieldset>
+    <fieldset class="question-body"></fieldset>
+  </form>
+</section>
