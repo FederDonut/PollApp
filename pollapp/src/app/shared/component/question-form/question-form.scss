@@ -1,0 +1,44 @@
+.question-wrapper {
+  height: 271px;
+  width: 429px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .question-name {
+    height: 71px;
+    width: 429px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .info-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .answer-wrapper {
+    height: 176px;
+    width: 429px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .inner-answer-wrapper {
+      height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .answer-input {
+        height: 37px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input {
+          width: 363px;
+        }
+      }
+    }
+  }
+}

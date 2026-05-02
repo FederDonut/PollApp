@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { QuestionForm } from '../question-form/question-form';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-survey-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, QuestionForm],
   templateUrl: './survey-form.html',
   styleUrl: './survey-form.scss',
 })

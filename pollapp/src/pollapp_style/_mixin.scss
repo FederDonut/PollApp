@@ -11,6 +11,12 @@
   border-bottom-right-radius: 5px;
 }
 
+@mixin create-input-radius {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 @mixin grow-left {
   transform-origin: left;
   transform: scaleX(1.5);

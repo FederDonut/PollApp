@@ -1,15 +1,24 @@
 @use '../../../../pollapp_style/mixin' as mixin;
 
 .forms-wrapper {
+  position: relative;
   height: 629px;
   width: 100%;
   background-color: #8e709929;
   @include mixin.create-survey-radius;
   border-top-right-radius: 80px;
+  padding: 40px 32px;
 
   .form-header {
     display: flex;
     border: none;
+    .survey-form__left {
+      height: 134px;
+      width: 470px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
   }
   .question-body {
     height: auto;

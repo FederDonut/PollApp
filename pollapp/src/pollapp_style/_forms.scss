@@ -1,0 +1,68 @@
+@use './mixin' as mixin;
+@use './functions' as fct;
+
+$Mulish: 'Mulish';
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+.input {
+  height: 37px;
+  max-width: 429px;
+  width: auto;
+  @include mixin.create-input-radius;
+  border: none;
+}
+.textarea {
+  height: 108px;
+  width: auto;
+  min-width: 418px;
+  //max-width: 418px;
+  @include mixin.create-input-radius;
+}
+
+.label {
+  font-family: $Mulish;
+  font-size: fct.px-to-rem(18);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.check {
+  position: relative;
+  @include mixin.center;
+  height: 21px;
+  width: 21px;
+
+  .checkbox {
+    position: absolute;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    margin: 0;
+    //opacity: 0;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    z-index: 10;
+    border: 1.5px solid #ffffff;
+    &:hover {
+      cursor: pointer;
+      background-color: #ffcfa199;
+    }
+  }
+  .checkbox:checked + .input-check:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-image: url(./../../public/img/form_check.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 10;
+  }
+}
