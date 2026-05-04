@@ -1,0 +1,54 @@
+<section class="forms-wrapper">
+  <form [formGroup]="surveyForm">
+    <fieldset class="form-header">
+      <section class="survey-form__left">
+        <label class="label" for="SurveyName">Survey name</label>
+        <section class="input-wrapper">
+          <input
+            class="input input--header"
+            type="text"
+            id="survey-Name"
+            name="survey-name"
+            formControlName="name"
+          />
+          <img src="./img/delete.svg" alt="delete-button " />
+        </section>
+
+        <section class="input-wrapper__2">
+          <section class="input-wrapper__left">
+            <label class="label" for="end-date">Set end date (optional)</label>
+            <section class="input-wrapper--date">
+              <input
+                class="input input--date"
+                type="date"
+                name="end-date"
+                id="end-Date"
+                formControlName="endDate"
+              />
+              <img src="./img/delete.svg" alt="delete-button" />
+            </section>
+          </section>
+
+          <section class="button-wrapper">
+            <button (mouseenter)="isHoverd = false" (mouseleave)="isHoverd = true">
+              <h3>Choose category</h3>
+              <img
+                [src]="isHoverd ? './img/white_arrow_down.svg' : './img/orange_arrow_down.svg'"
+                alt="white_arrow_down"
+              />
+            </button>
+          </section>
+        </section>
+      </section>
+      <section class="survey-form__right">
+        <label class="label" for="description">Description text (optional)</label>
+        <textarea class="textarea" name="Description" id="description" rows="4"></textarea>
+      </section>
+    </fieldset>
+
+    <fieldset class="question-body">
+      <app-question-form></app-question-form
+      ><!--Test zu scss zwecken-->
+    </fieldset>
+  </form>
+</section>

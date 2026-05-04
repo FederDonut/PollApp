@@ -9,10 +9,19 @@ fieldset {
 
 .input {
   height: 37px;
-  max-width: 429px;
-  width: auto;
+
+  width: fit-content;
   @include mixin.create-input-radius;
   border: none;
+}
+.input--header {
+  min-width: 429px;
+}
+.input--questions {
+  min-width: 363px;
+}
+.input--date {
+  min-width: 222px;
 }
 .textarea {
   height: 108px;

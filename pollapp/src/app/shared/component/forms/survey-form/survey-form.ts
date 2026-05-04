@@ -9,6 +9,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './survey-form.scss',
 })
 export class SurveyForm {
+  isHoverd: boolean = false;
+
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),
     endDate: new FormControl('', { validators: [Validators.required] }),

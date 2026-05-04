@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SurveyForm } from '../survey-form/survey-form';
+import { SurveyForm } from '../forms/survey-form/survey-form';
 
 @Component({
   selector: 'app-survey',
