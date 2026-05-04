@@ -11,6 +11,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class SurveyForm {
   isHoverd: boolean = false;
 
+  toggleCategory() {
+    console.log('connect');
+  }
+
+  //outsourcing in service
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),
     endDate: new FormControl('', { validators: [Validators.required] }),

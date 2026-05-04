@@ -30,7 +30,11 @@
           </section>
 
           <section class="button-wrapper">
-            <button (mouseenter)="isHoverd = false" (mouseleave)="isHoverd = true">
+            <button
+              (mouseenter)="isHoverd = false"
+              (mouseleave)="isHoverd = true"
+              (click)="toggleCategory()"
+            >
               <h3>Choose category</h3>
               <img
                 [src]="isHoverd ? './img/white_arrow_down.svg' : './img/orange_arrow_down.svg'"
