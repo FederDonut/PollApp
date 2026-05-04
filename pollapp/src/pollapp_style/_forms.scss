@@ -32,8 +32,8 @@ fieldset {
 .check {
   position: relative;
   @include mixin.center;
-  height: 21px;
-  width: 21px;
+  height: 15px;
+  width: 15px;
 
   .checkbox {
     position: absolute;

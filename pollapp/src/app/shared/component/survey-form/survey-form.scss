@@ -12,12 +12,16 @@
   .form-header {
     display: flex;
     border: none;
+    gap: 64px;
     .survey-form__left {
       height: 134px;
       width: 470px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+    .survey-form__right {
+      width: 452px;
     }
   }
   .question-body {

@@ -31,21 +31,27 @@ $Nokora: 'Nokora';
   }
 }
 
-.secondaryBtn {
+.surveyBtn {
+  height: 40px;
+  width: auto;
   border-radius: 10px;
   gap: 10px;
   border: 0;
-  padding: 0;
+  padding: 8px 12px;
   @include mixin.center;
+  background-color: #ffb7704d;
+  color: #ffffff;
+  font-family: $Nokora;
+  //font-size: 16px;
+  //font-size: fct.px-to-rem(16);
+  &:hover {
+    cursor: pointer;
+    background-color: #9e6b38;
+  }
 }
 
-.secondaryBtn--close {
-  height: 40px;
-  width: 108px;
-  background-color: #ffb7704d;
-  h5 {
-    font-family: $Nokora;
-    font-size: fct.px-to-rem(16);
+.surveyBtn--close {
+  h3 {
     color: #ffffff;
     padding: 0;
     margin: 0;
@@ -54,8 +60,11 @@ $Nokora: 'Nokora';
     height: fct.px-to-rem(24);
     width: fct.px-to-rem(24);
   }
-  &:hover {
-    cursor: pointer;
-    background-color: #9e6b38;
+}
+
+.surveyBtn--addQuestion {
+  img {
+    height: 20px;
+    width: 20px;
   }
 }

@@ -1,42 +1,96 @@
-.question-wrapper {
-  height: 271px;
-  width: 429px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+@use '../../../../pollapp_style/functions' as fct;
 
-  .question-name {
-    height: 71px;
+$Mulish: 'Mulish';
+$Nokora: 'Nokora';
+.wrapper {
+  display: flex;
+  gap: 91px;
+  .question-wrapper {
+    height: 271px;
     width: 429px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-  }
-  .info-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .answer-wrapper {
-    height: 176px;
-    width: 429px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    .inner-answer-wrapper {
-      height: auto;
-      width: 100%;
+    gap: 24px;
+
+    .question-name {
+      height: 71px;
+      width: 429px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      .answer-input {
-        height: 37px;
+    }
+    .info-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        p {
+          color: #ffffff;
+          font-size: fct.px-to-rem(12);
+          font-family: $Mulish;
+        }
+      }
+    }
+    .answer-wrapper {
+      height: 176px;
+      width: 429px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .inner-answer-wrapper {
+        height: auto;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 8px;
+        .answer-input {
+          height: 37px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          input {
+            width: 363px;
+          }
+        }
+      }
+    }
+    .add-answer {
+      height: 40px;
+      width: 172px;
+      display: flex;
+      align-items: center;
+
+      .space {
+        height: 100%;
+        width: calc(176px - 142px);
+      }
+      .add-answer__button {
+        height: 24px;
+        width: auto;
+        display: flex;
         align-items: center;
-        input {
-          width: 363px;
+        gap: 8px;
+        //padding: 8px 12px;
+        border-bottom: 1px solid #ffffff;
+
+        h3 {
+          color: #ffffff;
+          white-space: nowrap;
+          font-family: $Nokora;
+          font-size: fct.px-to-rem(16);
+          line-height: 100%;
+          letter-spacing: 0;
+          //border-bottom: 1px solid white;
+          //padding-bottom: 2px;
+        }
+        img {
+          //border-bottom: 1px solid white;
+          //padding-bottom: 2px;
         }
       }
     }
