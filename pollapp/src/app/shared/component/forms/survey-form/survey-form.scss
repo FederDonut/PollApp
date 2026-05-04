@@ -53,7 +53,7 @@ $Mulish: 'Mulish';
         justify-content: flex-end;
 
         button {
-          height: 32px;
+          height: 26px;
           width: 206px;
           display: flex;
           align-items: center;
@@ -61,6 +61,7 @@ $Mulish: 'Mulish';
           background-color: transparent;
           border: 0;
           border-radius: 6px;
+          margin-top: 4px;
           h3 {
             color: #ffffff;
             font-family: $Mulish;
@@ -68,6 +69,8 @@ $Mulish: 'Mulish';
           img {
             height: 8px;
             width: 15px;
+            &:hover {
+            }
           }
           &:hover {
             cursor: pointer;
