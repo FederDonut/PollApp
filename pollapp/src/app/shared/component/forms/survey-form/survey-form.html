@@ -50,9 +50,11 @@
       </section>
     </fieldset>
 
-    <fieldset class="question-body">
-      <app-question-form></app-question-form
-      ><!--Test zu scss zwecken-->
+    <fieldset class="question-body" #questionBody>
+      <app-question-form></app-question-form>
+      <!--@for (question of questions(); track $index) {
+        <app-question-form></app-question-form>
+    }-->
     </fieldset>
   </form>
 </section>

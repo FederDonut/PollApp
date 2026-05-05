@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { QuestionForm } from '../question-form/question-form';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,12 +9,16 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './survey-form.scss',
 })
 export class SurveyForm {
+  //questions = signal<number[]>([]);
   isHoverd: boolean = false;
 
   toggleCategory() {
     console.log('connect');
   }
 
+  //addNextQuestion() {
+  //  this.questions.update((current) => [...current, current.length]);
+  //}
   //outsourcing in service
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),

@@ -69,8 +69,6 @@ $Mulish: 'Mulish';
           img {
             height: 8px;
             width: 15px;
-            &:hover {
-            }
           }
           &:hover {
             cursor: pointer;
@@ -89,10 +87,11 @@ $Mulish: 'Mulish';
     }
   }
   .question-body {
-    height: auto;
+    height: 300px;
     max-height: 351px;
     width: 100%;
     margin-top: 64px;
     border: none;
+    overflow-y: auto;
   }
 }
