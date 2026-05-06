@@ -68,3 +68,28 @@ $Nokora: 'Nokora';
     width: 20px;
   }
 }
+
+.add-answer__button {
+  height: 24px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  //padding: 8px 12px;
+  border: 0;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffff;
+
+  h3 {
+    color: #ffffff;
+    white-space: nowrap;
+    font-family: $Nokora;
+    font-size: fct.px-to-rem(16);
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

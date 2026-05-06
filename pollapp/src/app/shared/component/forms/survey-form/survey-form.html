@@ -55,9 +55,10 @@
 
     <fieldset class="question-body">
       <section class="add-question-wrapper">
-        <app-question-form id="{{ 0 }}"></app-question-form>
+        <app-question-form [questionId]="1"></app-question-form>
         @for (question of questions(); track $index; let id = $index) {
-          <app-question-form id="{{ id + 1 }}"></app-question-form>
+          <!--child-->
+          <app-question-form [questionId]="id + 2"></app-question-form>
         }
         <button class="surveyBtn surveyBtn--addQuestion" (click)="addNextQuestion()">
           <h3>Add next question</h3>

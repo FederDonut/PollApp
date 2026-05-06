@@ -4,7 +4,8 @@ $Mulish: 'Mulish';
 $Nokora: 'Nokora';
 
 .question-wrapper {
-  height: 271px;
+  height: auto;
+  //height: 271px;
   width: 429px;
   display: flex;
   flex-direction: column;
@@ -34,7 +35,8 @@ $Nokora: 'Nokora';
     }
   }
   .answer-wrapper {
-    height: 176px;
+    height: auto;
+    //height: 176px;
     width: 429px;
     display: flex;
     flex-direction: column;
@@ -66,30 +68,6 @@ $Nokora: 'Nokora';
     .space {
       height: 100%;
       width: calc(176px - 142px);
-    }
-    .add-answer__button {
-      height: 24px;
-      width: auto;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      //padding: 8px 12px;
-      border-bottom: 1px solid #ffffff;
-
-      h3 {
-        color: #ffffff;
-        white-space: nowrap;
-        font-family: $Nokora;
-        font-size: fct.px-to-rem(16);
-        line-height: 100%;
-        letter-spacing: 0;
-        //border-bottom: 1px solid white;
-        //padding-bottom: 2px;
-      }
-      img {
-        //border-bottom: 1px solid white;
-        //padding-bottom: 2px;
-      }
     }
   }
 }

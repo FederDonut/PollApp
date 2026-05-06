@@ -1,7 +1,7 @@
 <section class="question-wrapper">
   <fieldset class="question-name">
     <section class="info-wrapper">
-      <label class="label" for="">1. Question</label>
+      <label class="label" for="">{{ questionId() }}. Question</label>
       <img src="./img/delete.svg" alt="delete-button" />
     </section>
     <input class="input input--header" type="text" />
@@ -29,13 +29,21 @@
         <input class="input input--question" type="text" />
         <img src="./img/delete.svg" alt="delete-button" />
       </fieldset>
+      <!--Hier weitere Antwortmögklichkeiten implemnetieren-->
+      @for (answer of answers(); track $index) {
+        <fieldset class="answer-input">
+          <label class="label">B.</label>
+          <input class="input input--question" type="text" />
+          <img src="./img/delete.svg" alt="delete-button" />
+        </fieldset>
+      }
     </section>
     <section class="add-answer">
       <section class="space"></section>
-      <section class="add-answer__button">
+      <button class="add-answer__button" (click)="addAnswer()">
         <h3>Add answer</h3>
         <img src="./img/add_circle.svg" alt="add_circle" />
-      </section>
+      </button>
     </section>
   </section>
 </section>

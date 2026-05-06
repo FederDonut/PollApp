@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-question-form',
@@ -7,5 +7,13 @@ import { Component, output } from '@angular/core';
   styleUrl: './question-form.scss',
 })
 export class QuestionForm {
-  newQuestionEvent = output<void>();
+  answers = signal<number[]>([]);
+  questionId = input<number>(1);
+
+  addAnswer() {
+    //let currentID: number = this.questionId();
+    //console.log(currentID);
+    this.answers.update((currentAnswer) => [...currentAnswer, currentAnswer.length]);
+    console.log(this.answers());
+  }
 }
