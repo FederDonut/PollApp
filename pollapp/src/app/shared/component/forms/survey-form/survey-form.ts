@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { QuestionForm } from '../question-form/question-form';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -9,16 +9,24 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './survey-form.scss',
 })
 export class SurveyForm {
-  //questions = signal<number[]>([]);
+  questions = signal<number[]>([]);
   isHoverd: boolean = false;
+  isStraight: boolean = false;
 
   toggleCategory() {
     console.log('connect');
   }
 
-  //addNextQuestion() {
-  //  this.questions.update((current) => [...current, current.length]);
-  //}
+  addNextQuestion() {
+    this.questions.update((current) => [...current, current.length]);
+
+    if (this.isStraight === true) {
+      this.isStraight = false;
+    } else {
+      this.isStraight = true;
+    }
+    console.log(this.isStraight);
+  }
   //outsourcing in service
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),

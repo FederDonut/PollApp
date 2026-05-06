@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-question-form',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './question-form.scss',
 })
 export class QuestionForm {
-
+  newQuestionEvent = output<void>();
 }

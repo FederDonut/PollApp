@@ -84,14 +84,37 @@ $Mulish: 'Mulish';
       display: flex;
       flex-direction: column;
       gap: 4px;
+      img {
+        height: 20px;
+        width: 18px;
+      }
+      .survey-form__right--bottom {
+        height: 108px;
+        width: 452px;
+        display: flex;
+        gap: 8px;
+      }
     }
   }
   .question-body {
-    height: 300px;
-    max-height: 351px;
+    display: flex;
+    gap: 91px; // muss evtl. variable gestaltet werden
+    height: 350px;
+    //min-height: 351px;
     width: 100%;
     margin-top: 64px;
     border: none;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .add-question-wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 34px 100px;
+    }
   }
 }

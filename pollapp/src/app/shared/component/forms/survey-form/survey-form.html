@@ -46,14 +46,27 @@
       </section>
       <section class="survey-form__right">
         <label class="label" for="description">Description text (optional)</label>
-        <textarea class="textarea" name="Description" id="description" rows="4"></textarea>
+        <section class="survey-form__right--bottom">
+          <textarea class="textarea" name="Description" id="description" rows="4"></textarea>
+          <img src="./img/delete.svg" alt="delete-button" />
+        </section>
       </section>
     </fieldset>
 
-    <fieldset class="question-body" #questionBody>
-      <app-question-form></app-question-form>
-      <!--@for (question of questions(); track $index) {
-        <app-question-form></app-question-form>
+    <fieldset class="question-body">
+      <section class="add-question-wrapper">
+        <app-question-form id="{{ 0 }}"></app-question-form>
+        @for (question of questions(); track $index; let id = $index) {
+          <app-question-form id="{{ id + 1 }}"></app-question-form>
+        }
+        <button class="surveyBtn surveyBtn--addQuestion" (click)="addNextQuestion()">
+          <h3>Add next question</h3>
+          <img src="./img/add_circle.svg" alt="add_circle" />
+        </button>
+      </section>
+
+      <!--
+      
     }-->
     </fieldset>
   </form>
