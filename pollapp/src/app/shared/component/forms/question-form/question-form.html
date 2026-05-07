@@ -2,7 +2,9 @@
   <fieldset class="question-name">
     <section class="info-wrapper">
       <label class="label" for="">{{ questionId() }}. Question</label>
-      <img src="./img/delete.svg" alt="delete-button" />
+      <button class="deleteBtn">
+        <img src="./img/delete.svg" alt="delete-button" />
+      </button>
     </section>
     <input class="input input--header" type="text" />
   </fieldset>
@@ -19,28 +21,19 @@
     </fieldset>
 
     <section class="inner-answer-wrapper">
-      <fieldset class="answer-input">
-        <label class="label">A.</label>
-        <input class="input input--question" type="text" />
-        <img src="./img/delete.svg" alt="delete-button" />
-      </fieldset>
-      <fieldset class="answer-input">
-        <label class="label">B.</label>
-        <input class="input input--question" type="text" />
-        <img src="./img/delete.svg" alt="delete-button" />
-      </fieldset>
-      <!--Hier weitere Antwortmögklichkeiten implemnetieren-->
-      @for (answer of answers(); track $index) {
+      @for (answer of answers(); track $index; let id = $index) {
         <fieldset class="answer-input">
-          <label class="label">B.</label>
+          <label class="label">{{ AnswerId[id] }}</label>
           <input class="input input--question" type="text" />
-          <img src="./img/delete.svg" alt="delete-button" />
+          <button class="deleteBtn" (click)="deleteAnswer(id)">
+            <img src="./img/delete.svg" alt="delete-button" />
+          </button>
         </fieldset>
       }
     </section>
     <section class="add-answer">
       <section class="space"></section>
-      <button class="add-answer__button" (click)="addAnswer()">
+      <button class="add-answer__button" (click)="addAnswer()" [style.display]="hideButton()">
         <h3>Add answer</h3>
         <img src="./img/add_circle.svg" alt="add_circle" />
       </button>
