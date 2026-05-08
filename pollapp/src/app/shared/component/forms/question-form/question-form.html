@@ -21,12 +21,12 @@
     </fieldset>
 
     <section class="inner-answer-wrapper">
-      @for (answer of answers(); track $index; let id = $index) {
+      @for (answer of answers(); track answer.id; let id = $index) {
         <fieldset class="answer-input">
           <label class="label">{{ AnswerId[id] }}</label>
           <input class="input input--question" type="text" />
           <button class="deleteBtn" (click)="deleteAnswer(id)">
-            <img src="./img/delete.svg" alt="delete-button" />
+            <img src="./img/delete.svg" alt="delete-button-img" />
           </button>
         </fieldset>
       }

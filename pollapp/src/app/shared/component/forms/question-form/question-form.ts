@@ -9,13 +9,18 @@ import { floor } from 'firebase/firestore/pipelines';
   styleUrl: './question-form.scss',
 })
 export class QuestionForm {
-  interface = signal<AnswerInterface[]>([{ id: 'A', text: '' }]);
-  answers = signal<number[]>([0, 1]);
+  AnswerId: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+  //interface = signal<AnswerInterface[]>([{ id: 'A', text: '' }]);
+  //answers = signal<number[]>([0, 1]);
+  answers = signal<AnswerInterface[]>([
+    { id: 'id-' + 0, text: '' },
+    { id: 'id-' + 1, text: '' },
+  ]);
   questionId = input<number>(1);
 
   visible: boolean = true;
-
-  AnswerId = ['A', 'B', 'C', 'D', 'E', 'F'];
+  counter: number = 2;
 
   hideButton() {
     if (this.answers().length >= 6) {
@@ -27,14 +32,18 @@ export class QuestionForm {
     }
   }
   addAnswer() {
-    this.answers.update((currentAnswer) => [...currentAnswer, currentAnswer.length]);
+    //this.answers.update((currentAnswer) => [...currentAnswer, currentAnswer.length]);
+
+    const newAnswers: AnswerInterface = {
+      id: 'id-' + this.counter++,
+      text: '',
+    };
+    this.answers.update((currentAnswer) => [...currentAnswer, newAnswers]);
     console.log(this.answers());
     this.hideButton();
   }
 
   deleteAnswer(index: number) {
-    // Interface zu aller erst implemntieren.
-
     this.answers.update((current) => {
       const newAnswers = [];
       for (let i = 0; i < current.length; i++) {
@@ -44,6 +53,7 @@ export class QuestionForm {
       }
       return newAnswers;
     });
+    //this.counter -1;
     console.log(this.answers());
     //console.log(this.questionId());
   }
