@@ -18,6 +18,7 @@ export class SurveyForm {
   questionCataloge: QuestionInterface[][] = [];
 
   ngOnInit() {}
+
   toggleCategory() {
     console.log('connect');
     console.log(this.questions());
@@ -37,9 +38,18 @@ export class SurveyForm {
     //this.questionCataloge.push(this.questions());
     //console.log('FrageKatalog:', this.questionCataloge);
   }
-  //deleteWholeQuestion(id:number) {
-  //  console.log(this.questions());
-  //}
+
+  // id müssen wieder angepasst werden --> ngOnInit()
+  deleteWholeQuestion(id: number) {
+    //console.log('Frage:', id, ' soll gelöscht werden ');
+    this.questions.update((currentQ) => {
+      console.log(currentQ);
+      return currentQ.filter((question) => question.id !== id);
+    });
+
+    console.log('Fragen die übrig geblieben sind: ', this.questions());
+  }
+
   //outsourcing in service
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),

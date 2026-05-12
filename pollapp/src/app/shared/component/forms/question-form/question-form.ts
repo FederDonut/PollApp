@@ -9,9 +9,11 @@ import { AnswerInterface } from '../../../interfaces/survey';
 })
 export class QuestionForm {
   AnswerId: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
-  questionCounter: number = 1;
 
+  questionCounter: number = 1;
   questionId = input<number>(1);
+  deleteQuestion = output<void>();
+
   visible: boolean = true;
   counter: number = 2;
   answers = signal<AnswerInterface[]>([
@@ -54,6 +56,7 @@ export class QuestionForm {
 
   deleteAnswer(index: number) {
     this.answers.update((current) => {
+      console.log(current);
       const newAnswers = [];
       for (let i = 0; i < current.length; i++) {
         if (i !== index) {
@@ -64,9 +67,5 @@ export class QuestionForm {
     });
     console.log(this.answers());
     console.log(this.questionId());
-  }
-
-  deleteWholeQuestion() {
-    console.log(this.answers());
   }
 }

@@ -58,7 +58,10 @@
         <!--<app-question-form [questionId]="1"></app-question-form>-->
         @for (question of questions(); track $index; let id = $index) {
           <!--child-->
-          <app-question-form [questionId]="id + 1"></app-question-form>
+          <app-question-form
+            (deleteQuestion)="deleteWholeQuestion(question.id)"
+            [questionId]="question.id"
+          ></app-question-form>
         }
         <button class="surveyBtn surveyBtn--addQuestion" (click)="addNextQuestion()">
           <h3>Add next question</h3>

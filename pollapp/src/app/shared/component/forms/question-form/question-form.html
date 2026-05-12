@@ -2,7 +2,7 @@
   <fieldset class="question-name">
     <section class="info-wrapper">
       <label class="label" for="">{{ questionId() }}. Question</label>
-      <button class="deleteBtn" (click)="deleteWholeQuestion()">
+      <button class="deleteBtn" (click)="deleteQuestion.emit()">
         <img src="./img/delete.svg" alt="delete-button" />
       </button>
     </section>
