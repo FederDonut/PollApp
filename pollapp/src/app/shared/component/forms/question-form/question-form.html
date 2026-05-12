@@ -2,7 +2,7 @@
   <fieldset class="question-name">
     <section class="info-wrapper">
       <label class="label" for="">{{ questionId() }}. Question</label>
-      <button class="deleteBtn">
+      <button class="deleteBtn" (click)="deleteWholeQuestion()">
         <img src="./img/delete.svg" alt="delete-button" />
       </button>
     </section>
@@ -21,7 +21,7 @@
     </fieldset>
 
     <section class="inner-answer-wrapper">
-      @for (answer of answers(); track answer.id; let id = $index) {
+      @for (answer of answers(); track answer.answer_body.id; let id = $index) {
         <fieldset class="answer-input">
           <label class="label">{{ AnswerId[id] }}</label>
           <input class="input input--question" type="text" />

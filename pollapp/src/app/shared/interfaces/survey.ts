@@ -7,12 +7,21 @@ export interface SurveyHeaderInterface {
 }
 // Ebene 2
 export interface QuestionInterface {
+  id: number;
   questionText: string;
   allowMultipleAnsers: boolean;
   answers: AnswerInterface[];
 }
 // Ebene 3
+//export interface AnswerInterface {
+//  id: string;
+//  text: string;
+//}
+
 export interface AnswerInterface {
-  id: string;
-  text: string;
+  question_id: number;
+  answer_body: {
+    id: string;
+    text: string;
+  };
 }

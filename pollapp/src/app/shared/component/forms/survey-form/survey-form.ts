@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { QuestionForm } from '../question-form/question-form';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { QuestionInterface } from '../../../interfaces/survey';
 
 @Component({
   selector: 'app-survey-form',
@@ -9,9 +10,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './survey-form.scss',
 })
 export class SurveyForm {
-  questions = signal<number[]>([0]);
-
+  questionCount: number = 1;
+  questions = signal<QuestionInterface[]>([
+    { id: this.questionCount, questionText: '', allowMultipleAnsers: false, answers: [] },
+  ]);
   isHoverd: boolean = false;
+  questionCataloge: QuestionInterface[][] = [];
 
   ngOnInit() {}
   toggleCategory() {
@@ -20,11 +24,22 @@ export class SurveyForm {
   }
 
   addNextQuestion() {
-    this.questions.update((current) => [...current, current.length]);
+    this.questionCount++;
+    const newQuestion: QuestionInterface = {
+      id: this.questionCount,
+      questionText: '',
+      allowMultipleAnsers: false,
+      answers: [],
+    };
+    this.questions.update((currentQuestion) => [...currentQuestion, newQuestion]);
+
+    console.log('Anzahl der Fragen: ', this.questions());
+    //this.questionCataloge.push(this.questions());
+    //console.log('FrageKatalog:', this.questionCataloge);
   }
-  removeQuestionObject(index: number) {
-    console.log(this.questions().indexOf(index));
-  }
+  //deleteWholeQuestion(id:number) {
+  //  console.log(this.questions());
+  //}
   //outsourcing in service
   surveyForm = new FormGroup({
     name: new FormControl('', { validators: [Validators.required, Validators.minLength(4)] }),

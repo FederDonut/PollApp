@@ -7,5 +7,9 @@ import { SurveyForm } from '../forms/survey-form/survey-form';
   templateUrl: './survey.html',
   styleUrl: './survey.scss',
 })
-export class Survey {}
+export class Survey {
+  publishNewSurvey() {
+    console.log('test');
+  }
+}
 // test
