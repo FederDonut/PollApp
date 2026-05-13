@@ -13,10 +13,11 @@ export class SurveyForm {
   questionCount: number = 0;
   questions = signal<QuestionInterface[]>([]);
   isHoverd: boolean = false;
-  questionCataloge: QuestionInterface[][] = [];
+  //questionCataloge: QuestionInterface[][] = [];
 
   ngOnInit() {
-    this.questions.set([]);
+    //this.questions.set([]);
+    this.addNextQuestion();
   }
 
   toggleCategory() {
