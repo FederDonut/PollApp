@@ -59,7 +59,7 @@
           <!--child-->
           <app-question-form
             (deleteQuestion)="deleteWholeQuestion($event)"
-            (addAnswer)="addAnswerInSingleQuestion($event)"
+            (addAnswer)="addAnswerToQuestion($event)"
             (deleteAnswer)="deleteAnswerInSingleQuestion($event)"
             [question]="singleQuestion"
           ></app-question-form>

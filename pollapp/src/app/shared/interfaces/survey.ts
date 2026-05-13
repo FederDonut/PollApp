@@ -9,7 +9,7 @@ export interface SurveyHeaderInterface {
 export interface QuestionInterface {
   id: number;
   questionText: string;
-  allowMultipleAnsers: boolean;
+  allowMultipleAnswers: boolean;
   answers: AnswerInterface[];
 }
 
