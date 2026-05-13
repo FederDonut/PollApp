@@ -55,12 +55,13 @@
 
     <fieldset class="question-body">
       <section class="add-question-wrapper">
-        <!--<app-question-form [questionId]="1"></app-question-form>-->
-        @for (question of questions(); track $index; let id = $index) {
+        @for (singleQuestion of questions(); track singleQuestion.id) {
           <!--child-->
           <app-question-form
-            (deleteQuestion)="deleteWholeQuestion(question.id)"
-            [questionId]="question.id"
+            (deleteQuestion)="deleteWholeQuestion($event)"
+            (addAnswer)="addAnswerInSingleQuestion($event)"
+            (deleteAnswer)="deleteAnswerInSingleQuestion($event)"
+            [question]="singleQuestion"
           ></app-question-form>
         }
         <button class="surveyBtn surveyBtn--addQuestion" (click)="addNextQuestion()">

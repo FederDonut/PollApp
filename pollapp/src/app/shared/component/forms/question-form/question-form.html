@@ -1,8 +1,8 @@
 <section class="question-wrapper">
   <fieldset class="question-name">
     <section class="info-wrapper">
-      <label class="label" for="">{{ questionId() }}. Question</label>
-      <button class="deleteBtn" (click)="deleteQuestion.emit()">
+      <label class="label" for="">{{ question().id }}. Question</label>
+      <button class="deleteBtn" (click)="onDeleteQuestion()">
         <img src="./img/delete.svg" alt="delete-button" />
       </button>
     </section>
@@ -21,11 +21,11 @@
     </fieldset>
 
     <section class="inner-answer-wrapper">
-      @for (answer of answers(); track answer.answer_body.id; let id = $index) {
+      @for (answer of question().answers; track answer.id; let id = $index) {
         <fieldset class="answer-input">
           <label class="label">{{ AnswerId[id] }}</label>
           <input class="input input--question" type="text" />
-          <button class="deleteBtn" (click)="deleteAnswer(id)">
+          <button class="deleteBtn" (click)="onDeleteAnswer(id)">
             <img src="./img/delete.svg" alt="delete-button-img" />
           </button>
         </fieldset>
@@ -33,7 +33,7 @@
     </section>
     <section class="add-answer">
       <section class="space"></section>
-      <button class="add-answer__button" (click)="addAnswer()" [style.display]="hideButton()">
+      <button class="add-answer__button" (click)="onAddAnswer()" [style.display]="hideButton()">
         <h3>Add answer</h3>
         <img src="./img/add_circle.svg" alt="add_circle" />
       </button>

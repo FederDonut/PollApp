@@ -12,16 +12,8 @@ export interface QuestionInterface {
   allowMultipleAnsers: boolean;
   answers: AnswerInterface[];
 }
-// Ebene 3
-//export interface AnswerInterface {
-//  id: string;
-//  text: string;
-//}
 
 export interface AnswerInterface {
-  question_id: number;
-  answer_body: {
-    id: string;
-    text: string;
-  };
+  id: string;
+  text: string;
 }

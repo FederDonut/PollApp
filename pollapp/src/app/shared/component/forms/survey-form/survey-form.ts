@@ -10,14 +10,14 @@ import { QuestionInterface } from '../../../interfaces/survey';
   styleUrl: './survey-form.scss',
 })
 export class SurveyForm {
-  questionCount: number = 1;
-  questions = signal<QuestionInterface[]>([
-    { id: this.questionCount, questionText: '', allowMultipleAnsers: false, answers: [] },
-  ]);
+  questionCount: number = 0;
+  questions = signal<QuestionInterface[]>([]);
   isHoverd: boolean = false;
   questionCataloge: QuestionInterface[][] = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.questions.set([]);
+  }
 
   toggleCategory() {
     console.log('connect');
@@ -30,7 +30,10 @@ export class SurveyForm {
       id: this.questionCount,
       questionText: '',
       allowMultipleAnsers: false,
-      answers: [],
+      answers: [
+        { id: 'id-0', text: '' },
+        { id: 'id-1', text: '' },
+      ],
     };
     this.questions.update((currentQuestion) => [...currentQuestion, newQuestion]);
 
@@ -48,6 +51,12 @@ export class SurveyForm {
     });
 
     console.log('Fragen die übrig geblieben sind: ', this.questions());
+  }
+
+  addAnswerInSingleQuestion(id: number) {}
+
+  deleteAnswerInSingleQuestion(event: {}) {
+    console.log(event);
   }
 
   //outsourcing in service
