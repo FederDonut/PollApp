@@ -15,7 +15,8 @@
       </section>
       <section class="survey-body">
         <!--Hier Survey-form implemnetieren-->
-        <app-survey-form></app-survey-form>
+        <app-survey-form [publish]="submit"></app-survey-form>
+        <!--Platzhalter-->
       </section>
       <section class="btn-wrapper">
         <button class="primaryBtn" (click)="publishNewSurvey()">Publish</button>

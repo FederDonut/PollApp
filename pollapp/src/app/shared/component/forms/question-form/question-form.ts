@@ -1,9 +1,10 @@
 import { Component, output, input, signal, inject } from '@angular/core';
 import { QuestionInterface } from '../../../interfaces/survey';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-question-form',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './question-form.html',
   styleUrl: './question-form.scss',
 })
@@ -43,4 +44,7 @@ export class QuestionForm {
   onDeleteQuestion() {
     this.deleteQuestion.emit(this.question().id);
   }
+
+  // Forms
+  answer = new FormControl<any>('');
 }

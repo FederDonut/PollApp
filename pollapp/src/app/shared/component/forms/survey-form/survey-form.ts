@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, input, effect } from '@angular/core';
 import { QuestionForm } from '../question-form/question-form';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AnswerInterface, QuestionInterface } from '../../../interfaces/survey';
@@ -13,12 +13,21 @@ export class SurveyForm {
   questionCount: number = 0;
   questions = signal<QuestionInterface[]>([]);
   isHoverd: boolean = false;
-  //questionCataloge: QuestionInterface[][] = [];
+
+  publish = input<boolean>();
 
   ngOnInit() {
     //this.questions.set([]);
     this.addNextQuestion();
   }
+
+  ngOnChanges() {
+    console.log(this.publish());
+  }
+
+  //publishChange = effect(() => {
+  //  console.log(this.publish());
+  //});
 
   toggleCategory() {
     console.log('connect');
@@ -58,26 +67,6 @@ export class SurveyForm {
     console.log('Fragen die übrig geblieben sind: ', this.questions());
   }
 
-  //addAnswerInSingleQuestion(id: number) {
-  //  console.log(id);
-  //  console.log(this.questions());
-  //  this.questions.update((current) => {
-  //    current.map((targetQuestion) => {
-  //      if (targetQuestion.id === id) {
-  //        console.log('check: ', targetQuestion);
-  //        const newAnswer = { id: 'id-' + targetQuestion.answers.length, text: '' };
-  //        return {
-  //          id: targetQuestion.id,
-  //          questionText: targetQuestion.questionText,
-  //          allowMultipleAnswers: targetQuestion.allowMultipleAnsers,
-  //          answers: targetQuestion.answers.concat(newAnswer),
-  //        };
-  //      }
-  //    });
-  //    return targetQuestion;
-  //  });
-  //}
-
   createNewAnswerObject(currentAnswers: number) {
     console.log(currentAnswers);
     const id = 'id-' + currentAnswers;
@@ -89,6 +78,9 @@ export class SurveyForm {
   }
 
   checkQuestions(question: QuestionInterface, targetQuestionId: number) {
+    if (question.id !== targetQuestionId) {
+      return question;
+    }
     const newAnswer = this.createNewAnswerObject(question.answers.length);
     const updateQuestion: QuestionInterface = {
       id: question.id,
@@ -96,6 +88,7 @@ export class SurveyForm {
       allowMultipleAnswers: question.allowMultipleAnswers,
       answers: question.answers.concat(newAnswer),
     };
+    console.log(updateQuestion);
     return updateQuestion;
   }
 
@@ -103,23 +96,17 @@ export class SurveyForm {
     const self = this;
     this.questions.update(function (currentQuestion) {
       return currentQuestion.map(function (q) {
+        console.log(q);
         return self.checkQuestions(q, id);
       });
     });
   }
 
-  //deleteAnswerInSingleQuestion(event: { questionID: number; answerID: number }) {
-  //  console.log(event);
-  //  console.log('Frage ID:', event.questionID, 'Antwort ID: ', event.answerID);
-  //  console.log(this.questions());
-  //
-  //}
-
   //Spread Operator = nimm das objket q brich es auf und kopiere alle Eigenschaften(id,usw)
   //in das folgende Opbjekt das Komma und das danach aufgeführet answer bedeutet kopiere alles auser diesen wert
   //diesen überschreibst du mit was ich dir mitgebe
   deleteAnswerInSingleQuestion(event: { questionID: number; answerID: number }) {
-    // übergebe dem Signal das gesamte Array Objekt
+    // übergebe dem Signal das gesamte Array Objekt das signal erwartet eine function
     this.questions.update((currentQuestions) =>
       currentQuestions.map((q) => {
         // 1. Finde die richtige Frage

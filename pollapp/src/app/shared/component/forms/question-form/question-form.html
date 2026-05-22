@@ -23,8 +23,8 @@
     <section class="inner-answer-wrapper">
       @for (answer of question().answers; track answer.id; let id = $index) {
         <fieldset class="answer-input">
-          <label class="label">{{ AnswerId[id] }}</label>
-          <input class="input input--question" type="text" />
+          <label for="answer" class="label">{{ AnswerId[id] }}</label>
+          <input class="input input--question" type="text" [formControl]="answer" />
           <button class="deleteBtn" (click)="onDeleteAnswer(id)">
             <img src="./img/delete.svg" alt="delete-button-img" />
           </button>

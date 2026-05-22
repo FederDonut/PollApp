@@ -8,8 +8,13 @@ import { SurveyForm } from '../forms/survey-form/survey-form';
   styleUrl: './survey.scss',
 })
 export class Survey {
+  //publish: boolean = false;
+  submit: boolean = false;
+
   publishNewSurvey() {
-    console.log('test');
+    if (!this.submit) {
+      this.submit = true;
+    }
+    return this.submit;
   }
 }
-// test
