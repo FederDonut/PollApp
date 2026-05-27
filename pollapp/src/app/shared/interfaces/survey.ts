@@ -14,6 +14,6 @@ export interface QuestionInterface {
 }
 
 export interface AnswerInterface {
-  id: string;
+  id: number;
   text: string;
 }

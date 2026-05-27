@@ -41,13 +41,15 @@ export class SurveyForm {
       questionText: '',
       allowMultipleAnswers: false,
       answers: [
-        { id: 'id-0', text: '' },
-        { id: 'id-1', text: '' },
+        { id: Date.now(), text: '' },
+        { id: Date.now() + 1, text: '' },
       ],
     };
     this.questions.update((currentQuestion) => [...currentQuestion, newQuestion]);
 
     console.log('Anzahl der Fragen: ', this.questions());
+    console.log('ID der neuen Frage: ', this.questions()[this.questions().length - 1].id);
+
     //this.generateStartAnswer();
   }
 
@@ -64,12 +66,23 @@ export class SurveyForm {
       return currentQ.filter((question) => question.id !== id);
     });
 
+    this.questionCount--;
+    //console.log(this.questionCount);
     console.log('Fragen die übrig geblieben sind: ', this.questions());
   }
 
-  createNewAnswerObject(currentAnswers: number) {
-    console.log(currentAnswers);
-    const id = 'id-' + currentAnswers;
+  addAnswerToQuestion(id: number) {
+    const self: this = this;
+    this.questions.update(function (currentQuestion) {
+      return currentQuestion.map(function (q) {
+        console.log(q);
+        return self.checkQuestions(q, id);
+      });
+    });
+  }
+
+  createNewAnswerObject() {
+    const id = Date.now();
     const newAnser: AnswerInterface = {
       id: id,
       text: '',
@@ -81,7 +94,7 @@ export class SurveyForm {
     if (question.id !== targetQuestionId) {
       return question;
     }
-    const newAnswer = this.createNewAnswerObject(question.answers.length);
+    const newAnswer = this.createNewAnswerObject();
     const updateQuestion: QuestionInterface = {
       id: question.id,
       questionText: question.questionText,
@@ -92,21 +105,12 @@ export class SurveyForm {
     return updateQuestion;
   }
 
-  addAnswerToQuestion(id: number) {
-    const self = this;
-    this.questions.update(function (currentQuestion) {
-      return currentQuestion.map(function (q) {
-        console.log(q);
-        return self.checkQuestions(q, id);
-      });
-    });
-  }
-
   //Spread Operator = nimm das objket q brich es auf und kopiere alle Eigenschaften(id,usw)
   //in das folgende Opbjekt das Komma und das danach aufgeführet answer bedeutet kopiere alles auser diesen wert
   //diesen überschreibst du mit was ich dir mitgebe
   deleteAnswerInSingleQuestion(event: { questionID: number; answerID: number }) {
     // übergebe dem Signal das gesamte Array Objekt das signal erwartet eine function
+
     this.questions.update((currentQuestions) =>
       currentQuestions.map((q) => {
         // 1. Finde die richtige Frage

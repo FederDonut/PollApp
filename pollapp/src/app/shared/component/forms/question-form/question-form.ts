@@ -1,6 +1,7 @@
-import { Component, output, input, signal, inject } from '@angular/core';
+import { Component, output, input, signal, inject, computed } from '@angular/core';
 import { QuestionInterface } from '../../../interfaces/survey';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormService } from '../../../services/form_service';
 
 @Component({
   selector: 'app-question-form',
@@ -9,11 +10,21 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './question-form.scss',
 })
 export class QuestionForm {
+  answerForm = inject(FormService);
+
+  controlAnswer = Array.from({ length: 6 }, () => this.answerForm.checkAnswer());
+
   AnswerId: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
   visible: boolean = true;
 
-  // interface wird erwartet.
+  // interface wird erwartet. Signals
   question = input.required<QuestionInterface>();
+
+  //answerControls = computed(() => {
+  //  return this.question().answers.map(() => {
+  //    return this.answerForm.checkAnswer();
+  //  });
+  //});
 
   deleteQuestion = output<number>();
   deleteAnswer = output<{ questionID: number; answerID: number }>();
@@ -45,6 +56,8 @@ export class QuestionForm {
     this.deleteQuestion.emit(this.question().id);
   }
 
-  // Forms
-  answer = new FormControl<any>('');
+  // Test funktionen
+  answerID(id: number) {
+    console.log('Antwort ID: ', id);
+  }
 }
