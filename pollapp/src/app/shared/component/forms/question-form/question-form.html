@@ -1,12 +1,15 @@
 <section class="question-wrapper">
   <fieldset class="question-name">
     <section class="info-wrapper">
-      <label class="label" for="">{{ question().id }}. Question</label>
+      <label class="label" for="">{{ index() + 1 }}. Question</label>
       <button class="deleteBtn" (click)="onDeleteQuestion()">
         <img src="./img/delete.svg" alt="delete-button" />
       </button>
     </section>
-    <input class="input input--header" type="text" />
+    <input class="input input--header" type="text" [formControl]="controlQuestion" />
+    @if (!controlQuestion.valid && controlQuestion.touched) {
+      <label for="valiadtion"><p>Question need a Name !</p></label>
+    }
   </fieldset>
   <section class="answer-wrapper">
     <fieldset class="info-wrapper">
@@ -31,7 +34,11 @@
             type="text"
             [formControl]="controlAnswer[id]"
           />
-
+          @if (!controlAnswer[id].valid && controlAnswer[id].touched) {
+            <label for="valiadtion-answer"
+              ><p>{{ controlAnswer[id].valid }}</p></label
+            >
+          }
           <button class="deleteBtn" (click)="onDeleteAnswer(id)">
             <img src="./img/delete.svg" alt="delete-button-img" />
           </button>

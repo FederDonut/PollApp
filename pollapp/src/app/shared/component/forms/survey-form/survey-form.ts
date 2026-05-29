@@ -53,11 +53,11 @@ export class SurveyForm {
     //this.generateStartAnswer();
   }
 
-  generateStartAnswer() {
-    console.log(this.questions().length);
-    const array = this.questions();
-    //const gesuchterUser = array.find((user) => console.log(user.answers));
-  }
+  //generateStartAnswer() {
+  //  console.log(this.questions().length);
+  //  //const array = this.questions();
+  //  //const gesuchterUser = array.find((user) => console.log(user.answers));
+  //}
   // id müssen wieder angepasst werden --> ngOnInit()
   deleteWholeQuestion(id: number) {
     //console.log('Frage:', id, ' soll gelöscht werden ');
@@ -66,7 +66,7 @@ export class SurveyForm {
       return currentQ.filter((question) => question.id !== id);
     });
 
-    this.questionCount--;
+    //this.questionCount--;
     //console.log(this.questionCount);
     console.log('Fragen die übrig geblieben sind: ', this.questions());
   }

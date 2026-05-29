@@ -10,25 +10,29 @@ import { FormService } from '../../../services/form_service';
   styleUrl: './question-form.scss',
 })
 export class QuestionForm {
-  answerForm = inject(FormService);
+  formService = inject(FormService);
 
-  controlAnswer = Array.from({ length: 6 }, () => this.answerForm.checkAnswer());
+  controlAnswer: FormControl[] = [];
+  controlQuestion = this.formService.checkQuestion();
+
+  //controlQuestion = this.answerForm.surveyForm;
 
   AnswerId: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
   visible: boolean = true;
 
   // interface wird erwartet. Signals
   question = input.required<QuestionInterface>();
-
-  //answerControls = computed(() => {
-  //  return this.question().answers.map(() => {
-  //    return this.answerForm.checkAnswer();
-  //  });
-  //});
+  index = input.required<number>();
 
   deleteQuestion = output<number>();
   deleteAnswer = output<{ questionID: number; answerID: number }>();
   addAnswer = output<number>();
+
+  ngOnInit() {
+    this.controlAnswer = Array.from({ length: this.question().answers.length }, () => {
+      return this.formService.checkAnswer();
+    });
+  }
 
   hideButton() {
     if (this.question().answers.length >= 6) {
@@ -41,10 +45,12 @@ export class QuestionForm {
   }
   onAddAnswer() {
     this.addAnswer.emit(this.question().id);
+    this.controlAnswer.push(this.formService.checkAnswer());
     this.hideButton();
   }
 
   onDeleteAnswer(index: number) {
+    this.controlAnswer.splice(index, 1);
     this.deleteAnswer.emit({
       questionID: this.question().id,
       answerID: index,
